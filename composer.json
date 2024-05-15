@@ -10,6 +10,7 @@
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "mezatsong/laravel-swagger-docs": "dev-master",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
@@ -23,6 +24,12 @@
         "pestphp/pest-plugin-laravel": "^2.0",
         "spatie/laravel-ignition": "^2.4"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/anheru88/laravel-swagger-docs"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",

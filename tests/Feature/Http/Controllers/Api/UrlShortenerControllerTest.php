@@ -3,7 +3,6 @@
 use App\Models\ShortenedUrl;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
-
 it('can retrieve all shortened URLs', function () {
     $urls = ShortenedUrl::factory()->count(3)->create();
 
@@ -13,7 +12,6 @@ it('can retrieve all shortened URLs', function () {
         '*' => ['id', 'original_url', 'shortened_url', 'created_at', 'updated_at'],
     ]);
 });
-
 
 it('can store a new shortened URL', function () {
     $data = ['original_url' => 'https://example123123.com'];
@@ -28,7 +26,7 @@ it('can store a new shortened URL', function () {
 it('can delete a shortened URL', function () {
     $url = ShortenedUrl::factory()->create();
 
-    $this->delete('/api/urls/' . $url->id)
+    $this->delete('/api/urls/'.$url->id)
         ->assertStatus(HttpResponse::HTTP_NO_CONTENT);
 
     $this->assertDatabaseMissing('shortened_urls', ['id' => $url->id]);
@@ -37,7 +35,7 @@ it('can delete a shortened URL', function () {
 it('can redirect to the original URL', function () {
     $url = ShortenedUrl::factory()->create();
 
-    $this->get('api/urls/' . $url->shortened_url)
+    $this->get('api/urls/'.$url->shortened_url)
         ->assertStatus(HttpResponse::HTTP_FOUND)
         ->assertJsonStructure(['original_url']);
 });
