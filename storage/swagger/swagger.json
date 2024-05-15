@@ -1,0 +1,319 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Test Spot2",
+        "description": "Documentation for the Application API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api",
+            "description": "Test Spot2 Server #1"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/urls": {
+            "get": {
+                "summary": "Retrieve all shortened URLs",
+                "description": "Retrieves all shortened URLs stored in the database.",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "return all urls information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortenedUrl"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "urls"
+                ]
+            },
+            "post": {
+                "summary": "Store a new shortened URL",
+                "description": "Stores a new shortened URL in the database.",
+                "deprecated": false,
+                "responses": {
+                    "201": {
+                        "description": "Successfully stored the shortened URL.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShortenedUrl"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "tags": [
+                    "urls"
+                ]
+            }
+        },
+        "/urls/{id}": {
+            "delete": {
+                "summary": "Remove a shortened URL",
+                "description": "Removes the specified shortened URL from storage.",
+                "deprecated": false,
+                "responses": {
+                    "204": {
+                        "description": "Successfully removed the shortened URL."
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "urls"
+                ]
+            }
+        },
+        "/urls/{shortenedUrl}": {
+            "get": {
+                "summary": "Redirect to the original URL",
+                "description": "Redirects to the original URL corresponding to the given shortened URL.",
+                "deprecated": false,
+                "responses": {
+                    "302": {
+                        "description": "Redirects to the original URL."
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "shortenedUrl",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "urls"
+                ]
+            }
+        }
+    },
+    "tags": [],
+    "components": {
+        "schemas": {
+            "ShortenedUrl": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "original_url": {
+                        "name": "original_url",
+                        "type_name": "varchar",
+                        "type": "varchar(255)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "shortened_url": {
+                        "name": "shortened_url",
+                        "type_name": "varchar",
+                        "type": "varchar(255)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-05-15 21:12:39"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-05-15 21:12:39"
+                    }
+                },
+                "required": [
+                    "id",
+                    "original_url"
+                ]
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "name": "id",
+                        "type_name": "bigint",
+                        "type": "bigint unsigned",
+                        "collation": null,
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "name": {
+                        "name": "name",
+                        "type_name": "varchar",
+                        "type": "varchar(255)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "email": {
+                        "name": "email",
+                        "type_name": "varchar",
+                        "type": "varchar(255)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "email_verified_at": {
+                        "name": "email_verified_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-05-15 21:12:39"
+                    },
+                    "password": {
+                        "name": "password",
+                        "type_name": "varchar",
+                        "type": "varchar(255)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": false,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "remember_token": {
+                        "name": "remember_token",
+                        "type_name": "varchar",
+                        "type": "varchar(100)",
+                        "collation": "utf8mb4_unicode_ci",
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null
+                    },
+                    "created_at": {
+                        "name": "created_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-05-15 21:12:39"
+                    },
+                    "updated_at": {
+                        "name": "updated_at",
+                        "type_name": "timestamp",
+                        "type": "timestamp",
+                        "collation": null,
+                        "nullable": true,
+                        "default": null,
+                        "auto_increment": false,
+                        "comment": null,
+                        "generation": null,
+                        "example": "2024-05-15 21:12:39"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "password"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
