@@ -17,7 +17,7 @@ class ShortenedUrlFactory extends Factory
     public function definition(): array
     {
         return [
-            'original_url' => fake()->url
+            'original_url' => fake()->url,
         ];
     }
 }

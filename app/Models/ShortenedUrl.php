@@ -28,9 +28,7 @@ class ShortenedUrl extends Model
         while (self::where('shortened_url', $url)->exists()) {
             $url = Str::random(8);
         }
+
         return $url;
     }
-
-
-
 }

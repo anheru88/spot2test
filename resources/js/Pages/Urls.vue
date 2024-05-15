@@ -1,7 +1,7 @@
 <template>
     <div class="m-10">
         <h1 class="mb-4">Stored URLs</h1>
-        <button type="button" class="btn btn-primary mb-3" @click="showAddUrlModal = true">Add New URL</button>
+        <button type="button" class="btn btn-primary mb-3" @click="showAddUrlModal = false">Add New URL</button>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
