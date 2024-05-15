@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 class UrlShortenerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //
+        $urls = ShortenedUrl::all();
+        return response()->json($urls);
     }
 
     /**
@@ -32,20 +33,12 @@ class UrlShortenerController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $url = ShortenedUrl::findOrFail($id);
+        $url->delete();
+
+        return response()->json(null, 204);
     }
 
     public function redirect($shortenedUrl)

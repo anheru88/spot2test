@@ -31,4 +31,6 @@ class ShortenedUrl extends Model
         return $url;
     }
 
+
+
 }
