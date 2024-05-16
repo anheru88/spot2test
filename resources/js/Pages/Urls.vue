@@ -1,7 +1,14 @@
 <template>
     <div class="m-10">
         <h1 class="mb-4">Stored URLs</h1>
-        <button type="button" class="btn btn-primary mb-3" @click="showAddUrlModal = false">Add New URL</button>
+        <!-- Form to add a new URL -->
+        <form @submit.prevent="addUrl">
+            <div class="mb-3">
+                <label for="originalUrl" class="form-label">Original URL:</label>
+                <input type="text" id="originalUrl" v-model="newUrl.original_url" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Add URL</button>
+        </form>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -23,26 +30,22 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Include Add URL Modal Component -->
-        <AddUrlModal v-model="showAddUrlModal" @url-added="fetchUrls"/>
     </div>
 </template>
 
 <script>
 import { ref } from 'vue';
-import AddUrlModal from './AddUrlModal.vue';
 import axios from 'axios';
 
 export default {
-    components: {
-        AddUrlModal
-    },
     setup() {
         // Define a reactive property for URLs
         const urls = ref([]);
 
-        const showAddUrlModal = ref(false);
+        // Object to store data for adding a new URL
+        const newUrl = ref({
+            original_url: ''
+        });
 
         // Function to fetch URLs from the server
         const fetchUrls = () => {
@@ -50,6 +53,20 @@ export default {
                 .then(response => {
                     // Update the value of 'urls'
                     urls.value = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        };
+
+        // Function to add a new URL
+        const addUrl = () => {
+            axios.post('/api/urls', newUrl.value)
+                .then(() => {
+                    // Refresh URLs list after successful addition
+                    fetchUrls();
+                    // Clear the input field
+                    newUrl.value.original_url = '';
                 })
                 .catch(error => {
                     console.error(error);
@@ -71,12 +88,20 @@ export default {
         // Initial fetch of URLs when component is mounted
         fetchUrls();
 
+        // Function to redirect to a shortened URL
+        const redirectTo = (shortenedUrl) => {
+            window.location.href = "/" + shortenedUrl;
+            console.log('Redirecting to:', shortenedUrl);
+        };
+
         // Return properties and methods to be used in the component
         return {
             urls,
+            newUrl,
             fetchUrls,
-            showAddUrlModal,
-            deleteUrl
+            addUrl,
+            deleteUrl,
+            redirectTo
         };
     }
 };
