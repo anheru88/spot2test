@@ -1,16 +1,11 @@
-# Technical Challenge Spot2 (IC FullStack) 
+# 🛠️ Technical Challenge Spot2 (IC FullStack)
+
+[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Fd88080b1-ddc8-46f1-a77a-e738edd90de8%3Fdate%3D1%26commit%3D1&style=for-the-badge)](https://forge.laravel.com/servers/789178/sites/2350067)
 
 ### Description
-En Spot2, una prop-tech pionera en el sector del real estate comercial, reconocemos que la
-innovación constante es el pilar de nuestro éxito. Esta dedicación a la vanguardia tecnológica nos
-exige no solo diseñar sistemas que escalen eficientemente y cumplan con los más altos
-estándares de calidad de código, sino también implementar soluciones que reflejen nuestra
-excelencia en la ejecución y nuestras sólidas prácticas de programación. Estamos buscando
-individuos apasionados por la tecnología que compartan nuestra dedicación a estos principios,
-para que juntos podamos continuar liderando la innovación en el mercado del real estate
-comercial.
+At Spot2, a pioneering prop-tech in the commercial real estate sector, we recognize that constant innovation is the cornerstone of our success. This commitment to technological advancement demands not only designing systems that scale efficiently and meet the highest standards of code quality, but also implementing solutions that reflect our excellence in execution and solid programming practices. We are looking for individuals passionate about technology who share our dedication to these principles, so that together we can continue to lead innovation in the commercial real estate market.
 
-You can find the total document in the next url - [Challenge Document](docs/doc.pdf)
+You can find the complete document at the following URL - [Challenge Document](docs/doc.pdf)
 
 ## 🚀 **Technical Challenge Solution Summary**
 
@@ -35,6 +30,10 @@ The technical challenge was successfully tackled by leveraging Laravel, Vue.js, 
 
 Overall, the solution demonstrates effective usage of Laravel, Vue.js, and Inertia.js, coupled with TDD practices, to develop a URL shortener application with scalability and maintainability in mind. Further enhancements, particularly regarding the frontend with Inertia.js, remain to be implemented to elevate the user interface and experience.
 
-### Testing 
+## 🧪 Unit Tests
 
-Actually, the app is currently hosted at the following URL: https://urls.trabajocontinuo.com/urls. You can test the application by visiting this link. Additionally, you can find the documentation at https://urls.trabajocontinuo.com/docs.
+![Tests](docs/tests.png)
+
+### Testing
+
+Actually, the app is currently hosted at the following URL: [https://urls.trabajocontinuo.com/urls](https://urls.trabajocontinuo.com/urls). You can test the application by visiting this link. Additionally, you can find the documentation at [https://urls.trabajocontinuo.com/docs](https://urls.trabajocontinuo.com/docs).
