@@ -28,6 +28,10 @@ class UrlShortenerController extends Controller
      *      description: return all urls information
      *      ref: ShortenedUrl
      *  })
+     * @Response({
+     *       code: 422
+     *       description: Unprocessable Content
+     *   })
      */
     public function index(): JsonResponse
     {
@@ -51,6 +55,11 @@ class UrlShortenerController extends Controller
      *      description: Successfully stored the shortened URL.
      *      ref: ShortenedUrl
      *  })
+     * @Response({
+     *       code: 422
+     *       description: Unprocessable Content.
+     *       ref: ShortenedUrl
+     *   })
      * @Response({
      *      code: 500
      *      description: Internal Server Error

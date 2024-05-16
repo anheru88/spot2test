@@ -29,13 +29,12 @@ The technical challenge was successfully tackled by leveraging Laravel, Vue.js, 
     - A Vue component named `Urls.vue` was created to display stored URLs in a table format.
     - It communicates with the backend API to fetch and delete URLs, utilizing axios for HTTP requests.
 
-- **Add URL Modal**
-    - An `AddUrlModal.vue` component was implemented for adding new URLs.
-    - Right Now working on this view.
-
 - **Inertia Integration**
     - Although not fully implemented, the solution is poised for Inertia.js integration to enhance frontend interactivity and improve user experience.
     - Some frontend functionalities are yet to be implemented for a complete user experience.
 
 Overall, the solution demonstrates effective usage of Laravel, Vue.js, and Inertia.js, coupled with TDD practices, to develop a URL shortener application with scalability and maintainability in mind. Further enhancements, particularly regarding the frontend with Inertia.js, remain to be implemented to elevate the user interface and experience.
 
+### Testing 
+
+Actually, the app is currently hosted at the following URL: https://urls.trabajocontinuo.com/urls. You can test the application by visiting this link. Additionally, you can find the documentation at https://urls.trabajocontinuo.com/docs.
