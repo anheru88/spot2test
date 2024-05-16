@@ -34,3 +34,7 @@ The technical challenge was successfully tackled by leveraging Laravel, Vue.js, 
     - Some frontend functionalities are yet to be implemented for a complete user experience.
 
 Overall, the solution demonstrates effective usage of Laravel, Vue.js, and Inertia.js, coupled with TDD practices, to develop a URL shortener application with scalability and maintainability in mind. Further enhancements, particularly regarding the frontend with Inertia.js, remain to be implemented to elevate the user interface and experience.
+
+### Testing 
+
+Actually, the app is currently hosted at the following URL: https://urls.trabajocontinuo.com/urls. You can test the application by visiting this link. Additionally, you can find the documentation at https://urls.trabajocontinuo.com/docs.
