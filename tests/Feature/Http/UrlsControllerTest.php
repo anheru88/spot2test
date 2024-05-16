@@ -15,5 +15,6 @@ it('can redirect to the original URL', function () {
     $url = ShortenedUrl::factory()->create();
 
     $this->get('/'.$url->shortened_url)
-        ->assertRedirect($url->original_url);
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Redirect'));
 });
