@@ -9,15 +9,13 @@ class UrlsController extends Controller
 {
     public function index()
     {
-        $urls = ShortenedUrl::all()->toArray();
-
-        return Inertia::render('Urls', ['urls' => $urls]);
+        return Inertia::render('Urls');
     }
 
-    public function redirect($shortenedUrl): \Illuminate\Contracts\Foundation\Application|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+    public function redirect($shortenedUrl)
     {
         $shortenedUrlModel = ShortenedUrl::where('shortened_url', $shortenedUrl)->firstOrFail();
 
-        return redirect($shortenedUrlModel->original_url);
+        return Inertia::render('Redirect', ['redirectUrl' => $shortenedUrlModel->original_url]);
     }
 }
